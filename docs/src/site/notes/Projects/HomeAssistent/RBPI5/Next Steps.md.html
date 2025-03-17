@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Next Steps</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+    /* CSS for syntax highlighting */
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { color: #008000; } /* BuiltIn */
+    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #902000; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { color: #008000; font-weight: bold; } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #4070a0; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+<h1
+id="detaillierter-ausblick-high-end-sprachsteuerung-mit-csm-und-home-assistant">Detaillierter
+Ausblick: High-End Sprachsteuerung mit CSM und Home Assistant</h1>
+<p>Mit deinem leistungsstarken System (Ryzen 9 5900X, 32GB RAM, RTX
+3080) eröffnen sich hervorragende Möglichkeiten für eine
+fortschrittliche Sprachsteuerung. Hier ist ein umfassender Plan:</p>
+<h2 id="grundaufbau-des-servers">1. Grundaufbau des Servers</h2>
+<h3 id="betriebssystem-basis">Betriebssystem &amp; Basis</h3>
+<ul>
+<li><strong>Proxmox VE</strong> als Hypervisor für Flexibilität</li>
+<li>Alternativ <strong>Ubuntu Server 22.04 LTS</strong> für einfacheres
+Setup</li>
+<li>Docker und Docker Compose für Container-Management</li>
+<li><strong>NVIDIA Container Toolkit</strong> für GPU-Beschleunigung in
+Containern</li>
+</ul>
+<h3 id="network-setup">Network-Setup</h3>
+<ul>
+<li>Dediziertes Subnetz für IoT/Smart Home (VLAN)</li>
+<li>Reverse Proxy (Traefik/Nginx) für sichere Außenzugriffe</li>
+</ul>
+<h2 id="csm-integration-mit-voller-leistung">2. CSM-Integration mit
+voller Leistung</h2>
+<h3 id="direkte-csm-installation">Direkte CSM-Installation</h3>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">version</span><span class="kw">:</span><span class="at"> </span><span class="st">&#39;3&#39;</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">services</span><span class="kw">:</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">csm-server</span><span class="kw">:</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">image</span><span class="kw">:</span><span class="at"> nvidia/cuda:12.0.1-runtime-ubuntu22.04</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">container_name</span><span class="kw">:</span><span class="at"> csm-server</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">restart</span><span class="kw">:</span><span class="at"> unless-stopped</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">ports</span><span class="kw">:</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> </span><span class="st">&quot;8765:8765&quot;</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">volumes</span><span class="kw">:</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> ./csm-data:/app/data</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> ./models:/app/models</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">environment</span><span class="kw">:</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> NVIDIA_VISIBLE_DEVICES=all</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">deploy</span><span class="kw">:</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="fu">resources</span><span class="kw">:</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="at">        </span><span class="fu">reservations</span><span class="kw">:</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="at">          </span><span class="fu">devices</span><span class="kw">:</span></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="at">            </span><span class="kw">-</span><span class="at"> </span><span class="fu">driver</span><span class="kw">:</span><span class="at"> nvidia</span></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="at">              </span><span class="fu">count</span><span class="kw">:</span><span class="at"> </span><span class="dv">1</span></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="at">              </span><span class="fu">capabilities</span><span class="kw">:</span><span class="at"> </span><span class="kw">[</span><span class="at">gpu</span><span class="kw">]</span></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="fu">    command</span><span class="kw">: </span><span class="ch">&gt;</span></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>      bash -c &quot;cd /app &amp;&amp; </span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>              apt-get update &amp;&amp; </span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>              apt-get install -y python3-pip git ffmpeg &amp;&amp;</span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>              git clone https://github.com/SesameAILabs/csm.git . &amp;&amp;</span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>              pip install -r requirements.txt &amp;&amp;</span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>              python3 server.py --port 8765 --model /app/models/csm-1b.pt&quot;</span></code></pre></div>
+<h3 id="optimale-csm-konfiguration">Optimale CSM-Konfiguration</h3>
+<ul>
+<li>GPU-Beschleunigung aktiviert</li>
+<li>16-bit Präzision (<code>--half</code> Flag) für bessere
+Performance</li>
+<li>Multi-Thread Inferenz für schnellere Reaktionszeiten</li>
+<li>Vorgeladen im RAM mit 3-4 Sekunden Antwortzeit</li>
+</ul>
+<h2 id="fortschrittliche-sprachassistenz-architektur">3.
+Fortschrittliche Sprachassistenz-Architektur</h2>
+<h3 id="komponenten">Komponenten</h3>
+<ol type="1">
+<li><strong>Wakeword-Erkennung</strong>: Präzisere OpenWakeWord- oder
+Rhasspy-Integration</li>
+<li><strong>STT (Speech-to-Text)</strong>: Whisper-Medium lokal auf
+GPU</li>
+<li><strong>NLU (Verstehen)</strong>: Lokales LLM für Intent-Erkennung
+(z.B. Phi-3 oder Llama 3)</li>
+<li><strong>TTS (Text-to-Speech)</strong>: CSM für natürliche
+Sprachausgabe</li>
+</ol>
+<h3 id="integration">Integration</h3>
+<div class="sourceCode" id="cb2"><pre
+class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">version</span><span class="kw">:</span><span class="at"> </span><span class="st">&#39;3&#39;</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">services</span><span class="kw">:</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">whisper-asr</span><span class="kw">:</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">image</span><span class="kw">:</span><span class="at"> onerahmet/openai-whisper-asr-webservice:latest</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">container_name</span><span class="kw">:</span><span class="at"> whisper-asr</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">restart</span><span class="kw">:</span><span class="at"> unless-stopped</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">ports</span><span class="kw">:</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> </span><span class="st">&quot;9000:9000&quot;</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">volumes</span><span class="kw">:</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> ./whisper-data:/app/data</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">environment</span><span class="kw">:</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> ASR_MODEL=medium</span></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> ASR_ENGINE=openai_whisper</span></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">deploy</span><span class="kw">:</span></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="fu">resources</span><span class="kw">:</span></span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a><span class="at">        </span><span class="fu">reservations</span><span class="kw">:</span></span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a><span class="at">          </span><span class="fu">devices</span><span class="kw">:</span></span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a><span class="at">            </span><span class="kw">-</span><span class="at"> </span><span class="fu">driver</span><span class="kw">:</span><span class="at"> nvidia</span></span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a><span class="at">              </span><span class="fu">capabilities</span><span class="kw">:</span><span class="at"> </span><span class="kw">[</span><span class="at">gpu</span><span class="kw">]</span></span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">intent-processor</span><span class="kw">:</span></span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">image</span><span class="kw">:</span><span class="at"> ghcr.io/huggingface/text-generation-inference:latest</span></span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">container_name</span><span class="kw">:</span><span class="at"> intent-processor</span></span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">restart</span><span class="kw">:</span><span class="at"> unless-stopped</span></span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">ports</span><span class="kw">:</span></span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> </span><span class="st">&quot;8080:80&quot;</span></span>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">volumes</span><span class="kw">:</span></span>
+<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> ./llm-models:/data</span></span>
+<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">environment</span><span class="kw">:</span></span>
+<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> MODEL_ID=/data/llama-3-8b</span></span>
+<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">deploy</span><span class="kw">:</span></span>
+<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="fu">resources</span><span class="kw">:</span></span>
+<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a><span class="at">        </span><span class="fu">reservations</span><span class="kw">:</span></span>
+<span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a><span class="at">          </span><span class="fu">devices</span><span class="kw">:</span></span>
+<span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a><span class="at">            </span><span class="kw">-</span><span class="at"> </span><span class="fu">driver</span><span class="kw">:</span><span class="at"> nvidia</span></span>
+<span id="cb2-36"><a href="#cb2-36" aria-hidden="true" tabindex="-1"></a><span class="at">              </span><span class="fu">capabilities</span><span class="kw">:</span><span class="at"> </span><span class="kw">[</span><span class="at">gpu</span><span class="kw">]</span></span>
+<span id="cb2-37"><a href="#cb2-37" aria-hidden="true" tabindex="-1"></a><span class="at">              </span></span>
+<span id="cb2-38"><a href="#cb2-38" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">assistant-orchestrator</span><span class="kw">:</span></span>
+<span id="cb2-39"><a href="#cb2-39" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">build</span><span class="kw">:</span><span class="at"> ./orchestrator</span></span>
+<span id="cb2-40"><a href="#cb2-40" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">container_name</span><span class="kw">:</span><span class="at"> assistant-orchestrator</span></span>
+<span id="cb2-41"><a href="#cb2-41" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">restart</span><span class="kw">:</span><span class="at"> unless-stopped</span></span>
+<span id="cb2-42"><a href="#cb2-42" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">ports</span><span class="kw">:</span></span>
+<span id="cb2-43"><a href="#cb2-43" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> </span><span class="st">&quot;3000:3000&quot;</span></span>
+<span id="cb2-44"><a href="#cb2-44" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">depends_on</span><span class="kw">:</span></span>
+<span id="cb2-45"><a href="#cb2-45" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> whisper-asr</span></span>
+<span id="cb2-46"><a href="#cb2-46" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> intent-processor</span></span>
+<span id="cb2-47"><a href="#cb2-47" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> csm-server</span></span></code></pre></div>
+<h2 id="integrationen-und-erweiterungen">4. Integrationen und
+Erweiterungen</h2>
+<h3 id="home-assistant-integration">Home Assistant Integration</h3>
+<ul>
+<li>MQTT-Integration für nahtlose Kommunikation</li>
+<li>Custom-Komponente mit WebSockets</li>
+<li>Erweiterte Assist-Pipeline für Lokalsprachverarbeitung</li>
+</ul>
+<h3 id="multiroom-unterstützung">Multiroom-Unterstützung</h3>
+<ul>
+<li>Synchronisierte Audio-Ausgabe über mehrere Lautsprecher</li>
+<li>Räumliche Wakeword-Erkennung</li>
+</ul>
+<h3 id="erweiterte-funktionen">Erweiterte Funktionen</h3>
+<ol type="1">
+<li><strong>Personenerkennung</strong>: Stimmerkennung für
+personalisierte Antworten</li>
+<li><strong>Kontextbewusstsein</strong>: Räumlicher Kontext für
+relevantere Antworten</li>
+<li><strong>Proaktive Benachrichtigungen</strong>: Wichtige Ereignisse
+werden mitgeteilt</li>
+</ol>
+<h2 id="konkrete-implementierungsschritte">5. Konkrete
+Implementierungsschritte</h2>
+<h3 id="phase-1-grundinfrastruktur">Phase 1: Grundinfrastruktur</h3>
+<ol type="1">
+<li>Betriebssystem installieren und Docker-Umgebung einrichten</li>
+<li>NVIDIA-Treiber und Container-Toolkit einrichten</li>
+<li>Netzwerk konfigurieren</li>
+</ol>
+<h3 id="phase-2-csm-implementierung">Phase 2: CSM-Implementierung</h3>
+<ol type="1">
+<li>CSM-Modell von Hugging Face herunterladen</li>
+<li>CSM-Server mit GPU-Unterstützung einrichten</li>
+<li>API-Endpunkt testen und optimieren</li>
+</ol>
+<h3 id="phase-3-vollständiger-sprachassistent">Phase 3: Vollständiger
+Sprachassistent</h3>
+<ol type="1">
+<li>Whisper ASR einrichten</li>
+<li>Intent-Verarbeitung mit lokalem LLM</li>
+<li>Integration in Home Assistant</li>
+</ol>
+<h3 id="phase-4-erweiterungen">Phase 4: Erweiterungen</h3>
+<ol type="1">
+<li>Multi-Room-Audio-Synchronisation</li>
+<li>Spezifische Domains für Smart Home Befehle</li>
+<li>Benutzerdefinierte Skills und Anwendungen</li>
+</ol>
+<h2 id="hardware-optimierungen">6. Hardware-Optimierungen</h2>
+<p>Deine ausgewählte Hardware bietet eine hervorragende Basis. Einige
+spezifische Empfehlungen:</p>
+<ol type="1">
+<li><strong>Speicher</strong>: Erhöhe auf 64GB RAM für besonders
+reibungslosen Betrieb mit mehreren großen Modellen</li>
+<li><strong>GPU-Optionen</strong>:
+<ul>
+<li>RTX 3080 (10GB VRAM): Gut für 1-2 Modelle gleichzeitig</li>
+<li>RTX 4080 (16GB VRAM): Ideal für mehrere parallele Modelle</li>
+</ul></li>
+<li><strong>Netzwerkkarte</strong>: Dedizierte PCIe-Karte für bessere
+Stabilität</li>
+<li><strong>Audio</strong>: Dedizierte Soundkarte für hochwertige
+Audioausgabe</li>
+</ol>
+<h2 id="erweiterte-projekt-roadmap">7. Erweiterte Projekt-Roadmap</h2>
+<h3 id="kurzfristig-1-2-monate">Kurzfristig (1-2 Monate)</h3>
+<ul>
+<li>Basissetup mit CSM für hochwertige Sprachausgabe</li>
+<li>Integration in bestehende Home Assistant Instanz</li>
+</ul>
+<h3 id="mittelfristig-3-6-monate">Mittelfristig (3-6 Monate)</h3>
+<ul>
+<li>Vollständige End-to-End lokale Sprachverarbeitung</li>
+<li>Benutzerdefinierte Domains und Skills</li>
+</ul>
+<h3 id="langfristig-6-monate">Langfristig (6+ Monate)</h3>
+<ul>
+<li>Multi-Modell-KI-System mit Kontext und Persönlichkeit</li>
+<li>Integration mit Computer Vision für umfassendere Wahrnehmung</li>
+</ul>
+<p>Mit dieser leistungsstarken Hardware und dem richtigen Software-Stack
+wird ein beeindruckendes lokales Sprachassistenzsystem realisiert werden
+können, das kommerziellen Cloud-Lösungen in nichts nachsteht und dabei
+vollständig unter eigener Kontrolle bleibt.</p>
+</body>
+</html>
