@@ -196,7 +196,7 @@ automation:
     action:
       - service: backup.create
         data:
-          name: "Tägliches Backup {{ now().strftime('%Y-%m-%d') }}"
+          name: "Tägliches Backup {{ site.time | date: "%Y-%m-%d" }}"
 ```
 
 ---
