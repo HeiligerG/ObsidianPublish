@@ -1,20 +1,43 @@
+/* 🌙 Indigo Dark Theme für GitHub Pages */
 body {
     font-family: Arial, sans-serif;
-    max-width: 800px;
+    max-width: 900px;
     margin: auto;
     padding: 20px;
-    background: #f4f4f4;
-    color: #333;
+    background: linear-gradient(to bottom, #2c3e50, #5a78b5);
+    color: #e0e0e0;
 }
 
-h1 {
-    color: indigo;
+h1, h2, h3 {
+    color: #c2d1ff;
 }
 
 a {
-    color: #3498db;
+    color: #81a1ff;
     text-decoration: none;
+    font-weight: bold;
 }
+
 a:hover {
-    color: #1abc9c;
+    color: #b2cfff;
+}
+
+pre, code {
+    background-color: #1e293b;
+    padding: 5px;
+    border-radius: 5px;
+    color: #c2d1ff;
+}
+
+blockquote {
+    border-left: 4px solid #5a78b5;
+    padding-left: 10px;
+    color: #dcdcdc;
+}
+
+.container {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
 }
