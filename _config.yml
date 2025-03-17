@@ -1,0 +1,4 @@
+title: "Obsidian Publish"
+description: "Meine veröffentlichten Obsidian-Notizen mit GitHub Pages & Jekyll."
+theme: jekyll-theme-cayman
+markdown: kramdown
