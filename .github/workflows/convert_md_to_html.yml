@@ -3,7 +3,7 @@ name: Convert Markdown to HTML & Deploy to GitHub Pages
 on:
   push:
     branches:
-      - main
+      - master
 
 jobs:
   build:
