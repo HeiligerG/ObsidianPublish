@@ -1,0 +1,140 @@
+<p>Dies ist eine detaillierte Anleitung zur Konvertierung von
+SafeTensor-Modellen in GGUF/quantisierte Modelme, inklusive Beispiele,
+Quellen und visuellen Darstellungen:</p>
+<hr />
+<h3 id="grundlagen-tools"><strong>1. Grundlagen &amp;
+Tools</strong></h3>
+<ul>
+<li><strong>SafeTensor</strong>: Ein sicheres Dateiformat für ML-Modelle
+(Hugging Face).</li>
+<li><strong>GGUF</strong>: Das Nachfolgeformat von GGML, optimiert für
+Llama.cpp (GPU/CPU).</li>
+<li><strong>Quantisierung</strong>: Reduziert die Modellgröße durch
+Präzisionsverkleinerung (z.B. FP32 → 4-Bit-Integer).</li>
+</ul>
+<p><strong>Benötigte Tools</strong>: - <code>transformers</code>
+(Hugging Face) - <code>llama.cpp</code> (<a
+href="https://github.com/ggerganov/llama.cpp">GitHub Repo</a>) -
+Python/PyTorch</p>
+<hr />
+<h3 id="konvertierungsprozess-schritt-für-schritt"><strong>2.
+Konvertierungsprozess (Schritt-für-Schritt)</strong></h3>
+<h4 id="a.-safetensor-pytorch-gguf"><strong>A. SafeTensor → PyTorch →
+GGUF</strong></h4>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Schritt 1: SafeTensor mit Hugging Face laden</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">from</span> transformers import AutoModelForCausalLM</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="ex">model</span> = AutoModelForCausalLM.from_pretrained<span class="er">(</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;meta-llama/Llama-2-7b-chat-hf&quot;</span><span class="ex">,</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    <span class="va">use_safetensors</span><span class="op">=</span>True</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="kw">)</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Schritt 2: Konvertierung zu GGUF mit llama.cpp</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/ggerganov/llama.cpp</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> llama.cpp</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="ex">python3</span> convert-hf-to-gguf.py <span class="dt">\</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>  <span class="at">--model</span> /pfad/zum/safetensor-modell <span class="dt">\</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>  <span class="at">--outfile</span> ./model/llama-2-7b-chat.gguf</span></code></pre></div>
+<h4 id="b.-quantisierung-des-gguf-modells"><strong>B. Quantisierung des
+GGUF-Modells</strong></h4>
+<div class="sourceCode" id="cb2"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Kompilieren Sie llama.cpp (erfordert &#39;make&#39; und C++-Compiler)</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">make</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Quantisierung (Beispiel: Q4_K_M)</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="ex">./quantize</span> ./model/llama-2-7b-chat.gguf ./model/llama-2-7b-chat-Q4_K_M.gguf Q4_K_M</span></code></pre></div>
+<hr />
+<h3 id="quantisierungsmethoden-beispiele"><strong>3.
+Quantisierungsmethoden (Beispiele)</strong></h3>
+<table>
+<thead>
+<tr class="header">
+<th>Typ</th>
+<th>Bits</th>
+<th>Speicherbedarf</th>
+<th>Genauigkeit</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Q4_0</td>
+<td>4</td>
+<td>Sehr klein</td>
+<td>Niedrig</td>
+</tr>
+<tr class="even">
+<td>Q4_K_M</td>
+<td>4</td>
+<td>Klein</td>
+<td>Mittel</td>
+</tr>
+<tr class="odd">
+<td>Q8_0</td>
+<td>8</td>
+<td>Mittel</td>
+<td>Hoch</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="visuelle-darstellung"><strong>4. Visuelle
+Darstellung</strong></h3>
+<pre><code>[SafeTensor (.safetensors)]
+         |
+         v
+[PyTorch-Modell (.bin/.pth)]
+         |
+         v
+[GGUF-Modell (.gguf)] 
+         |
+         v
+[Quantisiertes GGUF (z.B. Q4_K_M)]</code></pre>
+<hr />
+<h3 id="beispiel-llama-2-7b"><strong>5. Beispiel:
+LLaMA-2-7B</strong></h3>
+<ol type="1">
+<li><p><strong>Download</strong> des SafeTensor-Modells von Hugging
+Face:</p>
+<div class="sourceCode" id="cb4"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> huggingface_hub <span class="im">import</span> snapshot_download</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>snapshot_download(repo_id<span class="op">=</span><span class="st">&quot;meta-llama/Llama-2-7b-chat-hf&quot;</span>)</span></code></pre></div></li>
+<li><p><strong>Konvertierung</strong> mit
+<code>convert-hf-to-gguf.py</code> (Architektur angeben!):</p>
+<div class="sourceCode" id="cb5"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">python3</span> convert-hf-to-gguf.py <span class="dt">\</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">--model</span> ./Llama-2-7b-chat-hf <span class="dt">\</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">--outtype</span> f16 <span class="dt">\ </span> <span class="co"># FP16-Konvertierung</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  <span class="ex">--outfile</span> llama-2-7b-chat.gguf</span></code></pre></div></li>
+<li><p><strong>Quantisierung</strong> auf 4-Bit:</p>
+<div class="sourceCode" id="cb6"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">./quantize</span> llama-2-7b-chat.gguf llama-2-7b-chat-Q4_K_M.gguf Q4_K_M</span></code></pre></div></li>
+</ol>
+<hr />
+<h3 id="quellen-referenzen"><strong>6. Quellen &amp;
+Referenzen</strong></h3>
+<ul>
+<li><strong>llama.cpp-Dokumentation</strong>: <a
+href="https://github.com/ggerganov/llama.cpp/wiki">GitHub Wiki</a></li>
+<li><strong>Hugging Face Safetensors</strong>: <a
+href="https://huggingface.co/docs/safetensors/index">Offizielle
+Docs</a></li>
+<li><strong>Quantisierungshandbuch</strong>: <a
+href="https://github.com/ggerganov/llama.cpp/discussions/344">LLM
+Performance Guide</a></li>
+</ul>
+<hr />
+<h3 id="fehlerbehebung"><strong>7. Fehlerbehebung</strong></h3>
+<ul>
+<li><strong>Fehlende Architektur</strong>: Passen Sie
+<code>convert-hf-to-gguf.py</code> an (z.B.
+<code>--arch llama</code>).</li>
+<li><strong>RAM-Engpässe</strong>: Nutzen Sie <code>--split</code> bei
+großen Modellen.</li>
+<li><strong>GPU-Unterstützung</strong>: Kompilieren Sie llama.cpp mit
+CUDA (<code>make LLAMA_CUDA=1</code>).</li>
+</ul>
+<hr />
+<p>Diese Anleitung deckt den vollständigen Workflow von SafeTensor zu
+einem quantisierten GGUF-Modell ab. Für spezifische Modelle (z.B.
+Mistral, Phi-3) können zusätzliche Parameter erforderlich sein.</p>
