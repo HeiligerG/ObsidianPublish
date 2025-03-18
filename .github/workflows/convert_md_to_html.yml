@@ -22,11 +22,10 @@ jobs:
     - name: 🔄 Konvertiere Markdown zu HTML
       run: |
         mkdir -p docs
-        if [ -f style.css ]; then cp style.css docs/style.css; else echo "⚠️ style.css nicht gefunden!"; fi
-        find src/site/notes/Projects/ -type f -name "*.md" -exec sh -c '
-          mkdir -p "docs/$(dirname "{}")"
-          pandoc "{}" -s --css=../style.css -o "docs/$(dirname "{}")/$(basename "{}" .md).html"
-        ' \;
+                find src/site/notes/Projects/ -type f -name "*.md" -exec sh -c '
+                  mkdir -p "docs/$(dirname "{}")"
+                  pandoc "{}" -s --css=/ObsidianPublish/docs/style.css -o "docs/{}.html"
+                ' \;
 
 
     - name: 📤 Push konvertierte HTML-Dateien
