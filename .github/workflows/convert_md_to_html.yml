@@ -24,8 +24,9 @@ jobs:
         mkdir -p docs
                 find src/site/notes/Projects/ -type f -name "*.md" -exec sh -c '
                   mkdir -p "docs/$(dirname "{}")"
-                  pandoc "{}" -s --css=../../../style.css -o "docs/{}.html"
-              ' \;
+                  pandoc "{}" -s --metadata title="{}" -o "docs/{}.html"
+                  sed -i 's|<head>|<head><link rel="stylesheet" href="../../../../style.css">|' "docs/{}.html"
+                  
 
 
     - name: 📤 Push konvertierte HTML-Dateien
