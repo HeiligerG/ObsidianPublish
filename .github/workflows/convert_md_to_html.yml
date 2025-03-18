@@ -22,12 +22,13 @@ jobs:
     - name: 🔄 Konvertiere Markdown zu HTML
       run: |
         mkdir -p docs
-                find src/site/notes/Projects/ -type f -name "*.md" -exec sh -c '
-                  mkdir -p "docs/$(dirname "{}")"
-                  pandoc "{}" -s --metadata title="{}" -o "docs/{}.html"
-                  sed -i 's|<head>|<head><link rel="stylesheet" href="../../../../style.css">|' "docs/{}.html"
-                  
-
+        find src/site/notes/Projects/ -type f -name "*.md" -exec sh -c '
+          mkdir -p "docs/$(dirname "$1")"
+          pandoc "$1" -s --metadata title="$1" -o "docs/$1.html"
+          depth=$(echo "$1" | awk -F"/" "{print NF-4}")  # Berechne wie oft ../ nötig ist
+          prefix=$(printf "../%.0s" $(seq 1 $depth))  # Generiere dynamisch den korrekten Pfad
+          sed -i "s|<head>|<head><link rel=\"stylesheet\" href=\"${prefix}style.css\">|" "docs/$1.html"
+        ' _ {} \;
 
     - name: 📤 Push konvertierte HTML-Dateien
       run: |
