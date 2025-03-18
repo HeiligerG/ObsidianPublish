@@ -24,7 +24,7 @@ jobs:
         mkdir -p docs
         find src/site/notes/Projects/ -type f -name "*.md" -exec sh -c '
           mkdir -p "docs/$(dirname "{}")"
-          pandoc "{}" -s --css=/ObsidianPublish/docs/style.css -o "docs/{}.html"
+          pandoc "{}" -s --css=/ObsidianPublish/docs/style.css?v=2 -o "docs/{}.html"
         ' \;
 
     - name: 📤 Push konvertierte HTML-Dateien
