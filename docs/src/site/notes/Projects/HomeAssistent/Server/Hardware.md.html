@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head><link rel="stylesheet" href="../../../style.css">
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>src/site/notes/Projects/HomeAssistent/Server/Hardware.md</title>
+  <style>
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      background-color: #1a1a1a;
+      border: none;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">src/site/notes/Projects/HomeAssistent/Server/Hardware.md</h1>
+</header>
+<p>Eine <strong>detaillierte, zukunftssichere Upgrade-Strategie</strong>
+für einen <strong>Home Assistant + KI-Server</strong>, basierend auf
+einem <strong>Mid-Tier-Budget (bis zu 3.000 CHF)</strong>, einer
+<strong>Mid-Top-Tier-Aufrüstung (+3.000 CHF)</strong> und einer
+<strong>End-Tier-Erweiterung (+3.000 CHF)</strong>. Diese
+Konfigurationen sind modular, sodass nach und nach aufgerüstet werden
+kann.</p>
+<hr />
+<h1 id="mid-tier-solider-home-assistant-ki-server-3.000-chf"><strong>🟢
+MID-TIER: Solider Home Assistant &amp; KI-Server (~3.000
+CHF)</strong></h1>
+<p><strong>Ziel:</strong> Ein leistungsstarker Server für <strong>Home
+Assistant, Docker, Medienserver, KI-Modelle (kleinere LLMs),
+Virtualisierung &amp; Automatisierung</strong>. Bereit für spätere
+Upgrades.</p>
+<table>
+<colgroup>
+<col style="width: 15%" />
+<col style="width: 9%" />
+<col style="width: 35%" />
+<col style="width: 10%" />
+<col style="width: 28%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th><strong>Kategorie</strong></th>
+<th><strong>Komponente</strong></th>
+<th><strong>Modell</strong></th>
+<th><strong>Preis (CHF)</strong></th>
+<th><strong>Warum?</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Gehäuse</strong></td>
+<td>Fractal Design</td>
+<td><strong>Define R6 Black</strong></td>
+<td>~160 CHF</td>
+<td>Viel Platz für zukünftige Erweiterungen</td>
+</tr>
+<tr class="even">
+<td><strong>Netzteil</strong></td>
+<td>Corsair</td>
+<td><strong>RM850x (850W, modular)</strong></td>
+<td>~150 CHF</td>
+<td>Leise, stark für GPUs</td>
+</tr>
+<tr class="odd">
+<td><strong>Mainboard</strong></td>
+<td>ASUS</td>
+<td><strong>ROG Strix X670E-F Gaming (AM5, PCIe 5.0, DDR5)</strong></td>
+<td>~320 CHF</td>
+<td>Zukunftssicher mit PCIe 5.0</td>
+</tr>
+<tr class="even">
+<td><strong>CPU</strong></td>
+<td>AMD</td>
+<td><strong>Ryzen 9 7950X (16 Kerne, 5.7 GHz)</strong></td>
+<td>~600 CHF</td>
+<td>Sehr leistungsstark für KI &amp; Docker</td>
+</tr>
+<tr class="odd">
+<td><strong>RAM</strong></td>
+<td>Corsair</td>
+<td><strong>64GB DDR5-6000MHz (2x32GB)</strong></td>
+<td>~300 CHF</td>
+<td>Gut für KI-Modelle &amp; Virtualisierung</td>
+</tr>
+<tr class="even">
+<td><strong>Speicher (OS &amp; KI)</strong></td>
+<td>Samsung</td>
+<td><strong>990 Pro 2TB NVMe PCIe 4.0</strong></td>
+<td>~230 CHF</td>
+<td>Schnelle Boot- und Docker-Performance</td>
+</tr>
+<tr class="odd">
+<td><strong>Speicher (Daten)</strong></td>
+<td>Kingston</td>
+<td><strong>KC3000 2TB NVMe PCIe 4.0</strong></td>
+<td>~180 CHF</td>
+<td>Zweite SSD für Modelle &amp; VMs</td>
+</tr>
+<tr class="even">
+<td><strong>Speicher (Backup)</strong></td>
+<td>Seagate</td>
+<td><strong>IronWolf 8TB HDD (NAS optimiert)</strong></td>
+<td>~180 CHF</td>
+<td>Große Speicherlösung für Medien &amp; Docker</td>
+</tr>
+<tr class="odd">
+<td><strong>GPU</strong></td>
+<td>NVIDIA</td>
+<td><strong>RTX 4070 12GB GDDR6X</strong></td>
+<td>~750 CHF</td>
+<td>Guter Einstieg für KI-Berechnungen</td>
+</tr>
+<tr class="even">
+<td><strong>Kühlung CPU</strong></td>
+<td>Noctua</td>
+<td><strong>NH-D15 Chromax Black</strong></td>
+<td>~100 CHF</td>
+<td>Top Luftkühlung, sehr leise</td>
+</tr>
+<tr class="odd">
+<td><strong>Gehäuselüfter</strong></td>
+<td>Noctua</td>
+<td><strong>3x NF-A14 PWM 140mm</strong></td>
+<td>~60 CHF</td>
+<td>Effiziente Kühlung</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Gesamtkosten:</strong> <strong>~3.000 CHF</strong></p>
+<hr />
+<h1
+id="mid-top-tier-aufrüstung-für-größere-ki-modelle-zukunftssicherheit-3.000-chf"><strong>🔵
+MID-TOP TIER: Aufrüstung für größere KI-Modelle &amp; Zukunftssicherheit
+(+3.000 CHF)</strong></h1>
+<p><strong>Ziel:</strong> Erweiterung auf <strong>leistungsstärkere
+KI-Berechnungen</strong>, mehr Speicher für Datenbanken &amp; LLMs,
+bessere Virtualisierung.</p>
+<table>
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th><strong>Kategorie</strong></th>
+<th><strong>Upgrade</strong></th>
+<th><strong>Modell</strong></th>
+<th><strong>Preis (CHF)</strong></th>
+<th><strong>Warum?</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>RAM</strong></td>
+<td>64GB → <strong>128GB</strong></td>
+<td>Corsair Vengeance 64GB DDR5 (2x32GB)</td>
+<td>~300 CHF</td>
+<td>Mehr RAM für größere Modelle</td>
+</tr>
+<tr class="even">
+<td><strong>Speicher (Daten)</strong></td>
+<td>2TB → <strong>4TB NVMe</strong></td>
+<td>Kingston KC3000 2TB NVMe (zusätzliche SSD)</td>
+<td>~180 CHF</td>
+<td>Mehr Platz für Docker, KI &amp; VMs</td>
+</tr>
+<tr class="odd">
+<td><strong>GPU</strong></td>
+<td>RTX 4070 → <strong>RTX 4080 16GB</strong></td>
+<td>NVIDIA RTX 4080 16GB GDDR6X</td>
+<td>~1.200 CHF</td>
+<td>Stärkere GPU für KI-Training</td>
+</tr>
+<tr class="even">
+<td><strong>Netzteil</strong></td>
+<td>850W → <strong>1000W</strong></td>
+<td>Corsair RM1000x</td>
+<td>~200 CHF</td>
+<td>Mehr Leistung für zukünftige GPU-Upgrades</td>
+</tr>
+<tr class="odd">
+<td><strong>Speicher (Backup)</strong></td>
+<td>8TB → <strong>16TB RAID 1</strong></td>
+<td>2x Seagate IronWolf 8TB HDD</td>
+<td>~360 CHF</td>
+<td>Sicheres Backup mit RAID-Option</td>
+</tr>
+<tr class="even">
+<td><strong>Kühlung</strong></td>
+<td>Luftkühlung → <strong>Wasserkühlung</strong></td>
+<td>Corsair iCUE H150i (360mm)</td>
+<td>~180 CHF</td>
+<td>Bessere Kühlung für hohe Lasten</td>
+</tr>
+<tr class="odd">
+<td><strong>OS &amp; Docker SSD</strong></td>
+<td>2TB → <strong>PCIe 5.0 SSD</strong></td>
+<td>Samsung 990 Pro 2TB PCIe 5.0</td>
+<td>~300 CHF</td>
+<td>Schnellere Lese- &amp; Schreibgeschwindigkeit</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Gesamtkosten (Upgrade):</strong> <strong>~3.000
+CHF</strong><br />
+<strong>Neue Gesamtkosten:</strong> <strong>~6.000 CHF</strong></p>
+<hr />
+<h1
+id="end-tier-maximale-leistung-für-llms-ki-training-3.000-chf"><strong>🟠
+END-TIER: Maximale Leistung für LLMs &amp; KI-Training (+3.000
+CHF)</strong></h1>
+<p><strong>Ziel:</strong> Server auf High-End-Niveau bringen – volle
+Leistung für <strong>lokale KI-Modelle (Llama, GPT, Stable Diffusion),
+große Datenmengen, Virtualisierung &amp; mehrere GPUs</strong>.</p>
+<table>
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th><strong>Kategorie</strong></th>
+<th><strong>Upgrade</strong></th>
+<th><strong>Modell</strong></th>
+<th><strong>Preis (CHF)</strong></th>
+<th><strong>Warum?</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>CPU</strong></td>
+<td>Ryzen 7950X → <strong>Threadripper 7970X (32 Kerne)</strong></td>
+<td>AMD Threadripper 7970X</td>
+<td>~1.500 CHF</td>
+<td>Max Leistung für KI, Docker &amp; Virtualisierung</td>
+</tr>
+<tr class="even">
+<td><strong>Mainboard</strong></td>
+<td>X670E → <strong>TRX50 Motherboard</strong></td>
+<td>ASUS Pro WS TRX50-SAGE</td>
+<td>~600 CHF</td>
+<td>Unterstützt mehr PCIe-Geräte &amp; RAM</td>
+</tr>
+<tr class="odd">
+<td><strong>GPU</strong></td>
+<td>RTX 4080 → <strong>RTX 4090 24GB</strong></td>
+<td>NVIDIA RTX 4090 24GB GDDR6X</td>
+<td>~1.800 CHF</td>
+<td>High-End für Machine Learning &amp; Stable Diffusion</td>
+</tr>
+<tr class="even">
+<td><strong>RAM</strong></td>
+<td>128GB → <strong>256GB DDR5 ECC</strong></td>
+<td>Kingston 256GB DDR5 ECC (8x32GB)</td>
+<td>~1.000 CHF</td>
+<td>Perfekt für große KI-Modelle &amp; Virtualisierung</td>
+</tr>
+<tr class="odd">
+<td><strong>Netzteil</strong></td>
+<td>1000W → <strong>1200W</strong></td>
+<td>be quiet! Dark Power Pro 12</td>
+<td>~250 CHF</td>
+<td>Notwendig für Multi-GPU-Setup</td>
+</tr>
+<tr class="even">
+<td><strong>Speicher (Daten)</strong></td>
+<td>4TB → <strong>8TB NVMe RAID 0</strong></td>
+<td>2x Kingston KC3000 4TB NVMe</td>
+<td>~800 CHF</td>
+<td>Doppelte Geschwindigkeit &amp; große Kapazität</td>
+</tr>
+<tr class="odd">
+<td><strong>Gehäuse</strong></td>
+<td>Define R6 → <strong>Fractal Torrent XL</strong></td>
+<td>Fractal Torrent XL</td>
+<td>~250 CHF</td>
+<td>Besser für große GPUs &amp; Airflow</td>
+</tr>
+<tr class="even">
+<td><strong>Kühlung</strong></td>
+<td>Corsair H150i → <strong>Custom Wasserkühlung</strong></td>
+<td>EKWB High-Performance Loop</td>
+<td>~700 CHF</td>
+<td>Optimale Kühlung für CPU &amp; GPU</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Gesamtkosten (Upgrade):</strong> <strong>~3.000
+CHF</strong><br />
+<strong>Neue Gesamtkosten:</strong> <strong>~9.000 CHF</strong></p>
+<hr />
+<h1 id="endgültige-stufen-features"><strong>📊 Endgültige Stufen &amp;
+Features</strong></h1>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th><strong>Stufe</strong></th>
+<th><strong>Preis (CHF)</strong></th>
+<th><strong>Leistung</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>🟢 Mid-Tier (~3.000 CHF)</strong></td>
+<td>~3.000 CHF</td>
+<td>Perfekter Home Assistant &amp; KI-Server, gut für leichte
+KI-Modelle</td>
+</tr>
+<tr class="even">
+<td><strong>🔵 Mid-Top (~6.000 CHF)</strong></td>
+<td>~6.000 CHF</td>
+<td>Starke GPU &amp; viel Speicher für größere LLMs &amp;
+Virtualisierung</td>
+</tr>
+<tr class="odd">
+<td><strong>🟠 End-Tier (~9.000 CHF)</strong></td>
+<td>~9.000 CHF</td>
+<td><strong>Full-Power für KI-Modelle, Multi-GPU-Setup,
+High-End-Server</strong></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="fazit"><strong>💡 Fazit:</strong></h3>
+<p>✅ <strong>Mid-Tier (3.000 CHF)</strong> ist perfekt für <strong>Home
+Assistant, Docker &amp; kleine KI-Modelle</strong>.<br />
+✅ <strong>Mid-Top (6.000 CHF)</strong> macht das System <strong>fit für
+KI-Training &amp; größere Workloads</strong>.<br />
+✅ <strong>End-Tier (9.000 CHF)</strong> ist ein <strong>voller High-End
+KI-Trainingsserver für lokale GPT-Modelle</strong>.</p>
+<p>🔮 <strong>Mit dieser Strategie kann ich Schritt für Schritt
+aufrüsten, je nach Bedarf &amp; Technologieentwicklung.</strong> 🚀</p>
+</body>
+</html>

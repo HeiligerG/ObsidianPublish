@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head><link rel="stylesheet" href="../../../style.css">
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>src/site/notes/Projects/HomeAssistent/RBPI5/The End.md</title>
+  <style>
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      background-color: #1a1a1a;
+      border: none;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">src/site/notes/Projects/HomeAssistent/RBPI5/The
+End.md</h1>
+</header>
+<p>Aktuellen Ausgangslage für das Home Assistant Sprachassistenten-Setup
+auf dem Raspberry Pi 5:</p>
+<h2 id="laufende-container">Laufende Container</h2>
+<ol type="1">
+<li><p><strong>Home Assistant</strong></p>
+<ul>
+<li>Container: <code>homeassistant</code></li>
+<li>Status: Läuft seit 30 Stunden</li>
+<li>Funktion: Zentrale Smart Home Steuerung</li>
+</ul></li>
+<li><p><strong>Spracherkennungs-Services (Speech-to-Text)</strong></p>
+<ul>
+<li>Container: <code>vosk-de</code> und <code>vosk-en</code></li>
+<li>Ports: 10300 (Deutsch) und 10301 (Englisch)</li>
+<li>Status: Laufen seit 30 Stunden</li>
+<li>Funktion: Spracherkennung für Deutsch und Englisch</li>
+</ul></li>
+<li><p><strong>Wakeword-Erkennung</strong></p>
+<ul>
+<li>Container: <code>sira-wake</code></li>
+<li>Port: 10400</li>
+<li>Status: Läuft seit 30 Stunden</li>
+<li>Funktion: Erkennung des Aktivierungsworts “Sira”</li>
+</ul></li>
+<li><p><strong>TTS-Services (Text-to-Speech)</strong></p>
+<ul>
+<li>Container: <code>csm-lite</code> (vereinfachte Version des
+CSM-Modells)</li>
+<li>Port: 8000</li>
+<li>Status: Läuft seit 30 Stunden</li>
+<li>Funktion: Text-zu-Sprache Umwandlung (aktuell mit espeak-ng)</li>
+<li>Container: <code>piper-tts</code> (Alternative TTS-Engine)</li>
+<li>Port: 10200</li>
+<li>Status: Läuft seit 30 Stunden</li>
+<li>Funktion: Hochwertigere Text-zu-Sprache Umwandlung</li>
+</ul></li>
+<li><p><strong>Adapter und Integration</strong></p>
+<ul>
+<li>Container: <code>simple-adapter</code></li>
+<li>Port: 10700</li>
+<li>Status: Läuft seit 30 Stunden</li>
+<li>Funktion: Vermittelt zwischen CSM-Lite und anderen Diensten</li>
+<li>Container: <code>satellite-service</code></li>
+<li>Port: 10500</li>
+<li>Status: Läuft seit 30 Stunden</li>
+<li>Funktion: Koordiniert Wakeword, STT und TTS als Komplettlösung</li>
+</ul></li>
+<li><p><strong>Build-System</strong></p>
+<ul>
+<li>Container: <code>buildx_buildkit_charming_swirles0</code></li>
+<li>Status: Läuft seit 35 Stunden</li>
+<li>Funktion: Docker-Build-Tool</li>
+</ul></li>
+</ol>
+<h2 id="herausforderungen">Herausforderungen</h2>
+<p>Die Hauptherausforderung war die Integration des CSM-Modells
+(Conversational Speech Model) von Sesame Labs, das hochqualitative
+Sprachausgabe ermöglichen würde. Die Probleme waren:</p>
+<ol type="1">
+<li><p><strong>Ressourcenbeschränkungen</strong>: Das CSM-Modell mit
+seinen 1B Parametern ist zu rechenintensiv für ein effizientes Laufen
+auf dem Raspberry Pi 5.</p></li>
+<li><p><strong>Abhängigkeitsprobleme</strong>: Die Installation der
+erforderlichen Python-Bibliotheken (insbesondere
+<code>bitsandbytes</code>) auf ARM-Prozessoren stellte sich als
+problematisch heraus.</p></li>
+<li><p><strong>Audio-Integration</strong>: Die Audioausgabe über den
+Jabra-Lautsprecher innerhalb der Docker-Container erwies sich als
+herausfordernd.</p></li>
+</ol>
+<h2 id="nächste-schritte">Nächste Schritte</h2>
+<p>Der Plan, einen leistungsstärkeren Server aufzubauen, ist definitiv
+der richtige Weg, um das CSM-Modell mit seiner beeindruckenden
+Sprachqualität zu nutzen. Auf einem leistungsstärkeren System könnte
+man:</p>
+<ol type="1">
+<li>Das vollständige CSM-Modell direkt installieren</li>
+<li>Schnellere Inferenz-Zeiten erreichen</li>
+<li>Die hochwertige weibliche Stimme nutzen, die du dir wünschst</li>
+<li>LocalAI als Schnittstelle verwenden, wie im letzten Vorschlag
+beschrieben</li>
+</ol>
+<p>Mit der jetzigen Konfiguration hatte ich bereits eine solide
+Grundlage, die ich auf den neuen Server übertragen und dort erweitern
+kann. Der Aufbau eines dedizierten Servers für Sprachmodelle ist eine
+ausgezeichnete Investition für ein hochwertiges Smart-Home-System.</p>
+</body>
+</html>
