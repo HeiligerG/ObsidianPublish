@@ -4,7 +4,7 @@ on:
   push:
     branches:
       - master
-      
+
 permissions:
   contents: write
 
@@ -22,18 +22,27 @@ jobs:
     - name: 🔄 Konvertiere Markdown zu HTML
       run: |
         mkdir -p docs
-        find src/site/notes/Projects/ -type f -name "*.md" -exec sh -c '
-          mkdir -p "docs/$(dirname "$1")"
-          pandoc "$1" -s --metadata title="$1" -o "docs/$1.html"
-          depth=$(echo "$1" | awk -F"/" "{print NF-4}")  # Berechne wie oft ../ nötig ist
-          prefix=$(printf "../%.0s" $(seq 1 $depth))  # Generiere dynamisch den korrekten Pfad
-          sed -i "s|<head>|<head><link rel=\"stylesheet\" href=\"${prefix}style.css\">|" "docs/$1.html"
-        ' _ {} \;
+        find src/site/notes/Projects/ -type f -name "*.md" | while read -r file; do
+          rel_path="${file#src/site/notes/Projects/}"                   # relativer Pfad
+          output_path="docs/${rel_path%.md}.html"                      # Zielpfad mit .html-Endung
+          mkdir -p "$(dirname "$output_path")"                         # Zielverzeichnis erstellen
+          
+          # Pfad-Tiefe berechnen für korrekten CSS-Link
+          depth=$(awk -F"/" '{print NF-1}' <<< "$rel_path")
+          prefix=$(printf "../%.0s" $(seq 1 "$depth"))
+
+          # HTML generieren mit CSS und Syntax-Highlighting
+          pandoc "$file" -s \
+            --metadata title="${rel_path%.md}" \
+            --css="${prefix}style.css" \
+            --highlight-style=tango \
+            -o "$output_path"
+        done
 
     - name: 📤 Push konvertierte HTML-Dateien
       run: |
         git config --global user.name "GitHub Actions"
         git config --global user.email "actions@github.com"
         git add docs/
-        git commit -m "Auto-converted Markdown to HTML"
+        git commit -m "Auto-converted Markdown to HTML" || echo "Nothing to commit"
         git push origin master
